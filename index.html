@@ -7,6 +7,12 @@
   <meta name="Description" content="Boilerplate for polaris chip">
   <base href="/">
 
+  <!--Press Start 2P-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
   <style>
     :root,
     html,
@@ -19,11 +25,41 @@
     polaris-chip {
       margin: 16px;
     }
+
+    tagging-question {
+      margin: 16px;
+    }
+
+    tagging-question tagContainer {
+      border: 3px solid white;
+    }
+
+    haxcms-party-ui {
+      margin: 16px;
+
+    }
+
+    haxcms-party-ui partyInvite {
+      color: black;
+
+    }
   </style>
   <title>polaris-chip/my-card</title>
 </head>
 
 <body>
+
+  <h1>Tagging Question</h1>
+  <tagging-question></tagging-question>
+
+
+  <h1>haxcms-party-ui</h1>
+  <haxcms-party-ui></haxcms-party-ui>
+
+
+
+
+  
   <h1>polaris-chip</h1>
   <!-- this is going to do whatever the tag's defaults are -->
   <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
@@ -34,9 +70,13 @@
   <h1>my-card</h1>
   <my-card></my-card>
 
+  
+
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
   <script type="module" src="./src/my-card.js"></script>
+  <script type="module" src="./src/tagging-question.js"></script>
+  <script type="module" src="./src/haxcms-party-ui.js"></script>
 </body>
 
 </html>
