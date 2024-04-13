@@ -150,22 +150,35 @@ export class TaggingQuestion extends DDD {
         return html`<div class="chip" draggable="true"><p class="answerText">${item}</p></div>`;
     }
 
+    
+    makeItRain() {
+        import("@lrnwebcomponents/multiple-choice/lib/confetti-container.js").then(
+            (module) => {
+                setTimeout(() => {
+                this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
+            }, 0);
+          }
+        );
+    }
+
     render() {
         return html`
-             <div class="questionContainer">
-                <div class="promptContainer">
-                    <p class="questionText">In 1718, which pirate died in battle off the coast of what is now North Carolina?</p>
-                    <div class="answerZone"><p class="answerText">answer is dragged here.</p></div>
-                </div>
+            <confetti-container id="confetti">
+                <div class="questionContainer">
+                    <div class="promptContainer">
+                        <p class="questionText">In 1718, which pirate died in battle off the coast of what is now North Carolina?</p>
+                        <div class="answerZone"><p class="answerText">answer is dragged here.</p></div>
+                    </div>
             
-                <div class="tagContainer">
+                    <div class="tagContainer">
                         ${this.answers.map((item) => this.displayChips(item))}           
+                    </div>
+
+                    <button id="resetChips" @click="${this.chipsReset}">Reset</button>
+                    <button id="checkAnswer" @click="${this.solve}">check Answers</button>
+
                 </div>
-
-                <button id="resetChips" @click="${this.chipsReset}">Reset</button>
-                <button id="checkAnswer" @click="${this.solve}">check Answers</button>
-
-             </div>
+            </confetti-container>
 
             `;
     }
