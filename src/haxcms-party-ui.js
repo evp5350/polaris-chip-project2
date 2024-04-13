@@ -27,26 +27,28 @@ export class PartyUI extends DDD {
                 font-family: "Press Start 2P", system-ui;
             }
             .partyList {
-                background-color: var(--ddd-theme-default-beaverBlue);
+                background-color: black;
                 min-width: 100vh;
                 height: 620px;
                 padding: var(--ddd-spacing-4);
                 color: white;
                 overflow-y: scroll;
+                border: 5px solid white;
 
             }
 
             .title {
-                font-family: system-ui;
+                font-family: "Press Start 2P", system-ui;
                 text-align: center;
                 color: white;
 
             }
 
             .username {
-                font-family: system-ui;
+                font-family: "Press Start 2P", system-ui;
                 margin: var(--ddd-spacing-8);
                 padding: var(--ddd-spacing-8);
+                font-size: 12px;
                 
             }
 
@@ -71,8 +73,8 @@ export class PartyUI extends DDD {
             }
 
             .ruleText {
-                font-family: system-ui;
-                font-size: 12px;
+                font-family: "Press Start 2P", system-ui;
+                font-size: 9px;
                 margin: 0px;
                 padding: 0px;
 
@@ -83,8 +85,8 @@ export class PartyUI extends DDD {
             }
 
             #partyInvite {
-                font-family: system-ui;
-                font-size: var(--ddd-font-size-3xs);
+                font-family: "Press Start 2P", system-ui;
+                font-size: 9px;
                 font-weight: 500;
                 color: blue;
                 min-width: 190px;
@@ -99,8 +101,8 @@ export class PartyUI extends DDD {
             }
 
             .removeMember {
-                font-family: system-ui;
-                font-size: var(--ddd-font-size-3xs);
+                font-family: "Press Start 2P", system-ui;
+                font-size: 9px;
                 font-weight: 500;
                 color: blue;
                 min-width: 150px;
@@ -115,8 +117,8 @@ export class PartyUI extends DDD {
             }
             
             #saveParty {
-                font-family: system-ui;
-                font-size: var(--ddd-font-size-3xs);
+                font-family: "Press Start 2P", system-ui;
+                font-size: 9px;
                 font-weight: 500;
                 color: blue;
                 min-width: 190px;
@@ -155,11 +157,14 @@ export class PartyUI extends DDD {
             }
 
             #search-input {
-                font-family: system-ui;
+                font-family: "Press Start 2P", system-ui;
                 min-width: 43%;
                 margin: var(--ddd-spacing-3);
                 padding: var(--ddd-spacing-6);
-                background-color: var(--ddd-theme-default-slateMaxLight);
+                background-color: black;
+                font-size: 9px;
+                border: 3px solid white;
+                color: white;
             }
 
 
