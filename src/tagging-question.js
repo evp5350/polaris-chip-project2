@@ -15,8 +15,11 @@ export class TaggingQuestion extends DDD {
         this.reset = false;
         this.correct = false;
         this.image = "https://cdn.freebiesupply.com/logos/large/2x/penn-state-lions-logo-png-transparent.png";
-        this.message = "----";
+        this.message = "This is a defualt message: Feedback will display here once the your answer(s) are checked.";
         this.question = "";
+        this.questionNumber = 1;
+
+        //const tagdata = JSON.stringify(tagdata);
 
     }
   
@@ -33,7 +36,7 @@ export class TaggingQuestion extends DDD {
                 position: relative;
                 background-color: var(--ddd-theme-default-potentialMidnight);
                 min-width: 150vh;
-                height: 620px;
+                height: 720px;
                 padding: var(--ddd-spacing-4);
                 color: white;
                 border: 3px solid black;
@@ -79,9 +82,9 @@ export class TaggingQuestion extends DDD {
                 
             }
 
-            .solutionArea {
+            #solutionArea {
                 position: absolute;
-                top: 35%;
+                top: 30%;
                 left: 26%;
                 background-color: var(--ddd-theme-default-skyMaxLight);
                 width: 200px;
@@ -90,6 +93,16 @@ export class TaggingQuestion extends DDD {
                 padding: var(--ddd-spacing-1);
                 border: 5px dashed var(--ddd-theme-default-potentialMidnight);
 
+            }
+
+            .feedbackContainer {
+                display: inline-flex;
+                background-color: white;
+                width: 65%;
+                height: 100px;
+                border: 3px solid black;
+                margin: var(--ddd-spacing-2);
+                padding: var(--ddd-spacing-2);
             }
 
             
@@ -110,6 +123,7 @@ export class TaggingQuestion extends DDD {
             }
 
             #fill {
+                position: relative;
                 display: inline-block;
                 background-color: var(--ddd-theme-default-beaverBlue);
                 width: 100px;
@@ -128,15 +142,14 @@ export class TaggingQuestion extends DDD {
                 border: solid 5px #ccc;
             }
 
-            .empty {
-                background-color: gray;
-                width: auto;
+            #empty {
+                background-color: transparent;
+                width: 110px;
                 height: 65px;
                 margin: var(--ddd-spacing-4);
                 padding: var(--ddd-spacing-0);
 
             }
-
 
             .hovered {
                 background: #f4f4f4;
@@ -153,11 +166,10 @@ export class TaggingQuestion extends DDD {
             }
 
             .feedback {
-                font-family: "system.ui";
+                font-family: georgia;
                 color: black;
                 margin: 4px;
                 font-size: 12px;
-                text-align: center;
             }
 
             #resetChips {
@@ -172,7 +184,7 @@ export class TaggingQuestion extends DDD {
                 border-color: var(--ddd-theme-default-nittanyNavy);
                 background-color: var(--ddd-theme-default-keystoneYellow);
                 position: absolute;
-                top: 54%;
+                top: 48%;
                 left: 67%;
 
             }
@@ -187,16 +199,16 @@ export class TaggingQuestion extends DDD {
                 padding: var(--ddd-spacing-1);
                 border: var(--ddd-border-sm);
                 border-color: var(--ddd-theme-default-nittanyNavy);
-                background-color: var(--ddd-theme-default-pughBlue);
+                background-color: var(--ddd-theme-default-futureLime);
                 position: absolute;
-                top: 63%;
+                top: 58%;
                 left: 67%;
                 
             }
 
             #funnybutton {
                 font-family: "Press Start 2P", system-ui;
-                font-size: 15px;
+                font-size: 24px;
                 color: black;
                 width: 100px;
                 height: 50px;
@@ -204,9 +216,9 @@ export class TaggingQuestion extends DDD {
                 padding: var(--ddd-spacing-1);
                 border: var(--ddd-border-sm);
                 border-color: var(--ddd-theme-default-nittanyNavy);
-                background-color: var(--ddd-theme-default-futureLime);
+                background-color: var(--ddd-theme-default-pughBlue);
                 position: absolute;
-                top: 73%;
+                top: 68%;
                 left: 67%;
             }
 
@@ -233,6 +245,14 @@ export class TaggingQuestion extends DDD {
                 transform: scale(1.1);
                 transition: 0.3s ease-in-out;
             }
+            #div1,
+            #div2 {
+                width: 100px;
+                height: 50px;
+                padding: 10px;
+                border: 1px solid #aaaaaa;
+                font-family: Arial;
+            }
 
 
 
@@ -241,7 +261,7 @@ export class TaggingQuestion extends DDD {
         `];
     }
 
-    /*dragStart() {
+    /* dragStart() {
         dragging = this;
         this.className += ' hold';
         setTimeout(() => (this.className = 'invisible'), 0);
@@ -249,7 +269,7 @@ export class TaggingQuestion extends DDD {
     }
 
     dragEnd() {
-        this.className = 'fill';
+        this.className = 'fills';
     }
 
     dragOver(e) {
@@ -263,28 +283,13 @@ export class TaggingQuestion extends DDD {
     }
 
     dragLeave() {
-        this.className = 'empty';
+        this.className = 'solutionArea';
     }
 
     dragDrop() {
-        this.className = 'empty';
-        this.append(dragging);
+        this.className = 'solutionArea';
+        this.prepend(dragging);
     } */
-
-    allowDrop(e) {
-        e.preventDefualt();
-    }
-
-    dragStart(e) {
-        e.dataTransfer.setData("text", e.target.id);
-    }
-
-    dragDrop(e){
-        e.preventDefualt();
-        var data = e.dataTransfer.getData("text");
-        e.target.appendChild(document.getElementById(data));
-    }
-    
 
     chipsReset() {
         this.reset != this.reset;
@@ -299,8 +304,8 @@ export class TaggingQuestion extends DDD {
 
     displayChips(item) {
         return html`
-            <div class="empty" style= "background-color: transparent;" ondrop="dragDrop(e)" ondragover="allowDrop(e)">
-                <div id="fill" draggable="true" ondragstart="dragStart(e)"><p class="answerText">${item}</p></div>
+            <div id="empty">
+                <div id="fill"><p class="answerText" draggable="true" ondragstart="drag(event)">${item}</p></div>
             </div>
         `;
     }
@@ -318,38 +323,38 @@ export class TaggingQuestion extends DDD {
 
     render() {
         return html`
+            <script>
+                allowDrop(allowdropevent) {
+                    allowdropevent.target.style.color = "blue";
+                    allowdropevent.preventDefault();
+                }
 
-        
+                drag(dragevent) {
+                    dragevent.dataTransfer.setData("text", dragevent.target.id);
+                    dragevent.target.style.color = "green";
+                }
+
+                drop(dropevent) {
+                    dropevent.preventDefault();
+                    const data = dropevent.dataTransfer.getData("text");
+                    dropevent.target.appendChild(document.getElementById(data));
+                    document.getElementById("drag").style.color = "black";
+                }
+            </script>
+
+
+
+
+
             <confetti-container id="confetti">
-                <script>
-                    /*const fills = document.querySelectorAll('.fill');
-                    const empties = document.querySelectorAll('.empty');
-                    var dragging = {};
-
-                    for (const empty of empties) {
-                        empty.addEventListener('dragover', dragOver);
-                        empty.addEventListener('dragenter', dragEnter);
-                        empty.addEventListener('dragleave', dragLeave);
-                        empty.addEventListener('drop', dragDrop);
-                    }
-
-                    for (const fill of fills) {
-                        fill.addEventListener('dragstart', dragStart);
-                        fill.addEventListener('dragend', dragEnd);
-                    }*/
-
-
-
-                </script>
-
                 <div class="questionContainer">
                     <div class="solutionContainer">
                         <img class="image" src="${this.image}" alt=""></img>
                         <div class="promptContainer">
-                            <p class="questionText">${this.question}</p>
+                            <slot><p class="questionText">${this.question}</p></slot>
                         </div>
-                        <p class="feedback">${this.message}</p>
-                        <div class="solutionArea" ondrop="dragDrop(e)" ondragover="allowDrop(e)"></div>
+                        
+                        <div id="solutionArea" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                     </div>
 
             
@@ -362,6 +367,10 @@ export class TaggingQuestion extends DDD {
                         <button id="resetChips" @click="${this.chipsReset}">Reset</button>
                         <button id="checkAnswer" @click="${this.solve}">Check Answers</button>
                         <button id="funnybutton" @click="${this.makeItRain}">🎉</button>
+                    </div>
+
+                    <div class="feedbackContainer">
+                        <p class="feedback">${this.message}</p>
                     </div>
 
                 </div>
@@ -379,6 +388,7 @@ export class TaggingQuestion extends DDD {
             reset: { type: Boolean, reflect: true },
             image: { type: String },
             question: { type: String },
+            questionNumber: { type: Number },
                   
         };
     }
