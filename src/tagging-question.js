@@ -4,8 +4,8 @@ import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { RpgCharacter } from '@lrnwebcomponents/rpg-character/rpg-character.js';
 
 /* tagdata json import */
-import data from './tagdata.json' assert { type: 'json' };
-console.log(data);
+/* import data from './tagdata.json' assert { type: 'json' };
+console.log(data); */
 
 export class TaggingQuestion extends DDD {
     static get tag() {
@@ -23,10 +23,6 @@ export class TaggingQuestion extends DDD {
         this.message = "This is a defualt message: Feedback will be displayed here once the your answer(s) are checked.";
         this.question = "";
         this.questionNumber = 1;
-
-
-
-        //const tagdata = JSON.stringify(tagdata);
 
     }
   
