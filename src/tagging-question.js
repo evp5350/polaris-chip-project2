@@ -3,6 +3,10 @@ import "@lrnwebcomponents/rpg-character/rpg-character.js";
 import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
 import { RpgCharacter } from '@lrnwebcomponents/rpg-character/rpg-character.js';
 
+/* tagdata json import */
+import data from './tagdata.json' assert { type: 'json' };
+console.log(data);
+
 export class TaggingQuestion extends DDD {
     static get tag() {
         return "tagging-question";
@@ -10,14 +14,17 @@ export class TaggingQuestion extends DDD {
   
     constructor() {
         super();
-
+        
+        /*this.temp = ['good form', 'poor taste', 'contrasting themes', 'AI', 'shading', 'original work', 'accessible'];*/
         this.answers = ["Calico Jack", "Blackbeard", "Bartholomew Roberts", "Captain Kidd"];
         this.reset = false;
         this.correct = false;
         this.image = "https://cdn.freebiesupply.com/logos/large/2x/penn-state-lions-logo-png-transparent.png";
-        this.message = "This is a defualt message: Feedback will display here once the your answer(s) are checked.";
+        this.message = "This is a defualt message: Feedback will be displayed here once the your answer(s) are checked.";
         this.question = "";
         this.questionNumber = 1;
+
+
 
         //const tagdata = JSON.stringify(tagdata);
 
@@ -91,7 +98,7 @@ export class TaggingQuestion extends DDD {
                 height: 75px;
                 margin: var(--ddd-spacing-1);
                 padding: var(--ddd-spacing-1);
-                border: 5px dashed var(--ddd-theme-default-potentialMidnight);
+                border: 2px dashed var(--ddd-theme-default-potentialMidnight);
 
             }
 
@@ -163,6 +170,7 @@ export class TaggingQuestion extends DDD {
                 position: absolute;
                 top: 3%;
                 left: 73%;
+                border: 2px dashed white;
             }
 
             .feedback {
@@ -245,14 +253,45 @@ export class TaggingQuestion extends DDD {
                 transform: scale(1.1);
                 transition: 0.3s ease-in-out;
             }
-            #div1,
+            /*#div1,
             #div2 {
                 width: 100px;
                 height: 50px;
                 padding: 10px;
                 border: 1px solid #aaaaaa;
                 font-family: Arial;
+            } */
+            .div1 {
+                background-image: url('https://source.unsplash.com/random/150x150');
+                position: relative;
+                height: 150px;
+                width: 150px;
+                top: 5px;
+                left: 5px;
+                cursor: pointer;
+                }
+                .div1:hover {
+                outline: 2px solid blue;
             }
+
+            .hold1 {
+                border: solid 5px #ccc;
+            }
+
+            .div2 {
+                display: inline-block;
+                height: 160px;
+                width: 160px;
+                margin: 10px;
+                border: solid 3px salmon;
+                background: white;
+            }
+
+            .hovered1 {
+                background: #f4f4f4;
+                border-style: dashed;
+            }
+
 
 
 
@@ -288,7 +327,7 @@ export class TaggingQuestion extends DDD {
 
     dragDrop() {
         this.className = 'solutionArea';
-        this.prepend(dragging);
+        this.append(dragging);
     } */
 
     chipsReset() {
@@ -324,7 +363,7 @@ export class TaggingQuestion extends DDD {
     render() {
         return html`
             <script>
-                allowDrop(allowdropevent) {
+                /*allowDrop(allowdropevent) {
                     allowdropevent.target.style.color = "blue";
                     allowdropevent.preventDefault();
                 }
@@ -339,13 +378,81 @@ export class TaggingQuestion extends DDD {
                     const data = dropevent.dataTransfer.getData("text");
                     dropevent.target.appendChild(document.getElementById(data));
                     document.getElementById("drag").style.color = "black";
+
+
+                }*/
+
+                const div1s = document.querySelectorAll('.div1');
+                const div2s = document.querySelectorAll('.div2');
+                var dragging = {};
+                // Loop through empty boxes and add listeners
+                for (const div2 of div2s) {
+                    div2.addEventListener('dragover', dragOver);
+                    div2.addEventListener('dragenter', dragEnter);
+                    div2.addEventListener('dragleave', dragLeave);
+                    div2.addEventListener('drop', dragDrop);
+                }
+                // Loop through fills and add listeners
+                for (const div1 of div1s) {
+                    div1.addEventListener('dragstart', dragStart);
+                    div1.addEventListener('dragend', dragEnd);
+                }
+
+                // Drag Functions
+                function dragStart() {
+                    dragging = this;
+                    this.className += ' hold1';
+                    setTimeout(() => (this.className = 'invisible'), 0);
+                }
+
+                function dragEnd() {
+                    this.className = 'div1';
+                }
+
+                function dragOver(e) {
+                    e.preventDefault();
+                }
+
+                function dragEnter(e) {
+                    e.preventDefault();
+                    this.className += ' hovered2';
+                }
+
+                function dragLeave() {
+                    this.className = 'div2';
+                }
+
+                function dragDrop() {
+                    this.className = 'div2';
+                    this.append(dragging);
                 }
             </script>
+            <!-- <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <span id="drag" draggable="true" ondragstart="drag(event)"
+                    >drag me to the other box</span
+            >
+            </div>
+            <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div> -->
+            <!--
+            <div>
+            <div class="div2">
+                <div class="div1" draggable="true"> </div>
+            </div>
 
+            <div class="div2">
+                <div class="div1" draggable="true"> </div>
+            </div>
 
+            <div class="div2">
+            </div>
 
+            <div class="div2">
+            </div>
 
-
+            <div class="div2">
+            </div>
+            </div>
+            -->
             <confetti-container id="confetti">
                 <div class="questionContainer">
                     <div class="solutionContainer">
@@ -375,7 +482,7 @@ export class TaggingQuestion extends DDD {
 
                 </div>
             </confetti-container>
-
+            
             `;
     }
     
