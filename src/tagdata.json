@@ -1,5 +1,113 @@
 {
-    "id": 1,
-    "title": "Hello World",
-    "completed": false
+    "defualt": {
+        "True": {
+            "correct": true,
+            "feedback": "default feedback option true"
+        },
+        "False": {
+            "correct": false,
+            "feedback": "defualt feedback option false"
+        }
+    },
+    "hax-logo": {
+        "Good-form": {
+            "correct": true,
+            "feedback": "The shape of the vase clearly demonstrates craftmanship."
+
+        },
+
+        "Poor Taste": {
+            "correct": false,
+            "feedback": "Taste is in the eye of the designer as well as the viewer."
+
+        },
+        "Contrasting themes": {
+            "correct": false,
+            "feedback": "There is uniformity in the shape, but there is no depth to this media that is contrasting with otehr figures."
+
+        },
+        "AI": {
+            "correct": true,
+            "feedback": "While a modification of prior work, this is still AI genreated."
+
+        },
+
+        "Shading": {
+            "correct": false,
+            "feedback": "While there is a light source and shadow cast, shading is is a term based on pencil sketching."
+
+        },
+
+        "Original Work": {
+            "correct": false,
+            "feedback": "Artwork created from generative AI can not be original work."
+        },
+
+        "Accessible": {
+            "correct": false,
+            "feedback": "The color while high on contrast in some areas, loses form in others and has written text unrealted to the character."
+        }
+
+    },
+
+    "pirate": {
+        "Calico Jack": {
+            "correct": true,
+            "feedback": "Calico Jack was a pirate who operated in the Bahamas and Cuba. After being captured and found guilty of piracy, Calicio Jack died by hanging in Port Royal, Jamaica on 18th November 1820."
+
+        },
+
+        "Blackbeard": {
+            "correct": true,
+            "feedback": "Blackbeard was a pirate who operated in the Atlantic and West Indies. Anti-piracy operations by the Royal Navy led to Blackbeard's death at what is today Ocracoke Island, North Carolina on 22nd November 1718."
+
+        },
+        "Bartholomew Roberts": {
+            "correct": true,
+            "feedback": "Bartholomew Roberts was a pirate who operated in coasts of West Africa, Brazil, the Caribbean, and Newfoundland. In the Guinea coast of Africa, Bartholomew Roberts died by grapeshot on 10th February 1722."
+
+        },
+        "Captain Kidd": {
+            "correct": true,
+            "feedback": "Captain Kidd was originally a Scottish privateer for England until turning towards piracy after unsuccessful pirate apprehensions. It is uncertain where Captain Kidd began a career as a pirate, but he was sent to England from New York City to stand on trial for piracy accusations. Captain Kidd was found guilty of piracy, leading to his hanging execution on 23rd May 1701 in London, England."
+
+        },
+
+        "William 'Bull' Halsey": {
+            "correct": false,
+            "feedback": "William 'Bull' Halsey was one of the United States Navy's Fleet Admirals. He was never a pirate."
+
+        },
+
+        "Horace Hood": {
+            "correct": false,
+            "feedback": "Horace Hood was a Royal Navy Admiral in the First World War. He was never a pirate."
+
+        },
+
+        "Anne Bonny": {
+            "correct": true,
+            "feedback": "Anne Bonny was a pirate who operated in the Carribean. On 15 November 1720, Anne Bonny was captured along with her crew to Spanish Town, Jamaica to stand on trial for piracy. Anne Bonny was found guilty with a following execution, but her pregnancy would lift the death senetence. She would live to be married and have children. She died in Charles Towne where today is Charleston, South Carolina."
+
+        },
+
+        "Francis Drake": {
+            "correct": true,
+            "feedback": "Francis Drake is an English explorer and privateer who fought the Spanish Armada for England's defence. On 28th January 1596, Francis Drake succumbed to a fever during a his voyage in the West Indies."
+
+        },
+
+        "Günther Lütjens": {
+            "correct": false,
+            "feedback": "Günther Lütjens is a German Admiral who served in the First and Second World Wars, he was never a pirate."
+
+        },
+
+        "Zheng Yi Sao": {
+            "correct": true,
+            "feedback": "Zheng Yi Sao was a pirate leader who operated in the South China Sea, Canton or today known as Guangzhou, and the Carribean. Zheng Yi Sao's successful career as a pirate leader resulted her in overwhelming anti-piracy oppositions, and eventually having a peaceful life after leaving piracy. She becamed married, had one child, and died in 1844."
+
+        }
+
+    }
 }
