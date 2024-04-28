@@ -14,7 +14,7 @@ export class TaggingQuestion extends DDD {
         this.answers = "defualt";
         this.image = "https://cdn.freebiesupply.com/logos/large/2x/penn-state-lions-logo-png-transparent.png";
         this.message = "This is a defualt message: Feedback will be displayed here once the your answer(s) are checked.";
-        this.question = "";
+        this.question = "The question will appear here.";
         this.currentTag;
         this.checked = false;
         this.dataSheet = new URL('../src/tagdata.json', import.meta.url).href;
@@ -86,7 +86,7 @@ export class TaggingQuestion extends DDD {
             }
 
             #tagContainer {
-                display: flex;
+                display: block;
                 background-color: var(--ddd-theme-default-navy80);
                 width: 65%;
                 height: 200px;
@@ -94,6 +94,7 @@ export class TaggingQuestion extends DDD {
                 margin: var(--ddd-spacing-2);
                 padding: var(--ddd-spacing-2);
                 overflow-y: scroll;
+
                 
             }
             #panel {
@@ -103,6 +104,7 @@ export class TaggingQuestion extends DDD {
             }
 
             #solutionArea {
+                display: block;
                 background-color: var(--ddd-theme-default-skyMaxLight);
                 width: 95.5%;
                 height: 75px;
@@ -114,15 +116,14 @@ export class TaggingQuestion extends DDD {
             }
 
             #feedbackContainer {
-                display: flex;
                 background-color: white;
-                width: 65%;
+                max-width: 65%;
                 height: 100px;
                 border: 3px solid black;
                 margin: var(--ddd-spacing-2);
                 padding: var(--ddd-spacing-2);
                 overflow-y: scroll;
-                align-content: left;
+                resize: vertical;
                 
             }
 
@@ -143,6 +144,9 @@ export class TaggingQuestion extends DDD {
                 cursor: pointer;
                 color: white;
                 font-family: georgia;
+                font-size: auto;
+                text-align: center;
+
             }
             
             .chip:hover {
@@ -163,9 +167,11 @@ export class TaggingQuestion extends DDD {
                 display: flex;
                 font-family: georgia;
                 color: black;
-                margin: 4px;
+                margin: var(--ddd-spacing-0);
+                padding: var(--ddd-spacing-0);
                 font-size: 12px;
                 flex-direction: column;
+                resize: vertical;
             }
 
             #panel #resetChips {
@@ -232,7 +238,7 @@ export class TaggingQuestion extends DDD {
                 margin: var(--ddd-spacing-0);
                 padding: var(--ddd-spacing-0);
                 align-content: center;
-                border: 1px solid white;
+                border: transparent;
                 
                 
 
@@ -248,7 +254,7 @@ export class TaggingQuestion extends DDD {
 
             #panel #checkAnswer:focus,
             #panel #checkAnswer:hover {
-                background-color: green;
+                background-color: var(--ddd-theme-default-opportunityGreen);
                 color: var(--ddd-theme-default-roarMaxlight);
                 transform: scale(1.1);
                 transition: 0.3s ease-in-out;
@@ -266,36 +272,26 @@ export class TaggingQuestion extends DDD {
             #zoomButton:hover {
                 background-color: var(--ddd-theme-default-navy40);
                 color: var(--ddd-theme-default-roarMaxlight);
-                transform: scale(1.1);
-                transition: 0.3s ease-in-out;
+                
             }
 
             .correct {
-                border: solid 1px var(--correct-col);
-                color: var(--correct-col);
-                background: var(--bg);
-            }
-            .correct:nth-child(n):focus, .correct:nth-child(n):hover {
-                background: var(--correct-col);
-                color: var(--bg);
+                border: solid 3px black;
+                color: black;
+                background: var(--ddd-theme-default-opportunityGreen);
             }
 
             .incorrect {
-                border: solid 1px var(--incorrect-col);
-                color: var(--incorrect-col);
-                background: var(--bg-color);
-            }
-            .incorrect:nth-child(n):focus, .incorrect:nth-child(n):hover {
-                background: var(--incorrect-col);
-                color: var(--bg-color);
+                border: solid 3px black;
+                color: black;
+                background: red;
             }
 
             .disabled {
-                opacity: 50% !important;
-                pointer-events: none !important;
-                user-select: none !important;
-                background-color: var(--bg-color) !important;
-                color: var(--text-1) !important;
+                opacity: 75%;
+                pointer-events: none;
+                user-select: none;
+                
             }
 
             .noPointerEvents {
@@ -305,6 +301,8 @@ export class TaggingQuestion extends DDD {
 
 
             .zoomedImgContainer {
+                display: flex;
+                justify-content: center;
                 position: absolute;
                 top: 8%;
                 left: 8%;
@@ -314,18 +312,21 @@ export class TaggingQuestion extends DDD {
                 padding: var(--ddd-spacing-0);
                 margin: var(--ddd-spacing-0);
                 opacity: var(--details-vision, 0);
+                pointer-events: none;
+                transition: 0.3s ease-in-out;
+                border: 3px solid white;
                 
             }
 
             .zoomedImg {
-                position: relative;
-                top: 5%;
-                left: 16%;
                 opacity: var(--details-vision, 0);
-                height: 90%;
-                width: 70%;
-                padding: var(--ddd-spacing-0);
-                margin: var(--ddd-spacing-0);
+                max-height: 90%;
+                max-width: 70%;
+                padding: var(--ddd-spacing-4);
+                margin: var(--ddd-spacing-4);
+                pointer-events: none;
+                transition: 0.3s ease-in-out;
+
             }
 
 

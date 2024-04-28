@@ -1,14 +1,26 @@
 {
     "defualt": {
-        "True": {
-            "correct": true,
-            "feedback": "default feedback option true"
-        },
-        "False": {
+        "TAG A": {
             "correct": false,
-            "feedback": "defualt feedback option false"
+            "feedback": "This is the response from TAG A."
+        },
+        "TAG B": {
+            "correct": false,
+            "feedback": "This is the response from TAG B."
+        },
+
+        "TAG C": {
+            "correct": true,
+            "feedback": "This is the response from TAG C. When in doubt, pick C."
+        },
+
+        "TAG D": {
+            "correct": false,
+            "feedback": "This is the response from TAG D."
         }
+
     },
+
     "hax-logo": {
         "Good-form": {
             "correct": true,
@@ -23,7 +35,7 @@
         },
         "Contrasting themes": {
             "correct": false,
-            "feedback": "There is uniformity in the shape, but there is no depth to this media that is contrasting with otehr figures."
+            "feedback": " There is uniformity in the shape, but there is no depth to this media to imply that it is contrasting with other figures."
 
         },
         "AI": {
@@ -34,18 +46,18 @@
 
         "Shading": {
             "correct": false,
-            "feedback": "While there is a light source and shadow cast, shading is is a term based on pencil sketching."
+            "feedback": "While there is a light source and a shadow cast, shading is a term used for pencil based sketching."
 
         },
 
         "Original Work": {
-            "correct": false,
-            "feedback": "Artwork created from generative AI can not be original work."
+            "correct": true,
+            "feedback": "This character is not based on any person, place, or existing trope"
         },
 
         "Accessible": {
             "correct": false,
-            "feedback": "The color while high on contrast in some areas, loses form in others and has written text unrealted to the character."
+            "feedback": "The color scheme while high contrast in some areas, loses form in others and has written text unrelated to the character."
         }
 
     },
@@ -53,59 +65,77 @@
     "pirate": {
         "Calico Jack": {
             "correct": true,
-            "feedback": "Calico Jack was a pirate who operated in the Bahamas and Cuba. After being captured and found guilty of piracy, Calicio Jack died by hanging in Port Royal, Jamaica on 18th November 1820."
+            "feedback": "<Strong><em>Calico Jack</em></strong> was a <Strong><em>pirate</em></strong> who operated in the Bahamas and Cuba."
 
         },
 
         "Blackbeard": {
             "correct": true,
-            "feedback": "Blackbeard was a pirate who operated in the Atlantic and West Indies. Anti-piracy operations by the Royal Navy led to Blackbeard's death at what is today Ocracoke Island, North Carolina on 22nd November 1718."
+            "feedback": "<Strong><em>Blackbeard</em></strong> was a <Strong><em>pirate</em></strong> who operated in the Atlantic and West Indies."
 
         },
         "Bartholomew Roberts": {
             "correct": true,
-            "feedback": "Bartholomew Roberts was a pirate who operated in coasts of West Africa, Brazil, the Caribbean, and Newfoundland. In the Guinea coast of Africa, Bartholomew Roberts died by grapeshot on 10th February 1722."
+            "feedback": "<Strong><em>Bartholomew Roberts</em></strong> was a <Strong><em>pirate</em></strong> who operated in coasts of West Africa, Brazil, the Caribbean, and Newfoundland."
 
         },
         "Captain Kidd": {
             "correct": true,
-            "feedback": "Captain Kidd was originally a Scottish privateer for England until turning towards piracy after unsuccessful pirate apprehensions. It is uncertain where Captain Kidd began a career as a pirate, but he was sent to England from New York City to stand on trial for piracy accusations. Captain Kidd was found guilty of piracy, leading to his hanging execution on 23rd May 1701 in London, England."
+            "feedback": "<Strong><em>Captain Kidd</em></strong> was originally a Scottish privateer for England until <Strong><em>turning towards piracy</em></strong> after unsuccessful pirate apprehensions."
 
         },
 
         "William 'Bull' Halsey": {
             "correct": false,
-            "feedback": "William 'Bull' Halsey was one of the United States Navy's Fleet Admirals. He was never a pirate."
+            "feedback": "<Strong><em>William 'Bull' Halsey</em></strong> was one of the United States Navy's Fleet Admirals. <Strong><em>He was never a pirate.</em></strong>"
 
         },
 
         "Horace Hood": {
             "correct": false,
-            "feedback": "Horace Hood was a Royal Navy Admiral in the First World War. He was never a pirate."
+            "feedback": "<Strong><em>Horace Hood</em></strong> was a Royal Navy Admiral in the First World War. <Strong><em>He was never a pirate.</em></strong>"
 
         },
 
         "Anne Bonny": {
             "correct": true,
-            "feedback": "Anne Bonny was a pirate who operated in the Carribean. On 15 November 1720, Anne Bonny was captured along with her crew to Spanish Town, Jamaica to stand on trial for piracy. Anne Bonny was found guilty with a following execution, but her pregnancy would lift the death senetence. She would live to be married and have children. She died in Charles Towne where today is Charleston, South Carolina."
+            "feedback": "<Strong><em>Anne Bonny</em></strong> was a <Strong><em>pirate</em></strong> who operated in the Carribean."
 
         },
 
         "Francis Drake": {
             "correct": true,
-            "feedback": "Francis Drake is an English explorer and privateer who fought the Spanish Armada for England's defence. On 28th January 1596, Francis Drake succumbed to a fever during a his voyage in the West Indies."
+            "feedback": "<Strong><em>Francis Drake</em></strong> is an English explorer and privateer who fought the Spanish Armada for England's defence. He was known as <Strong><em>'The Queen's Favorite Pirate.'</em></strong>"
 
         },
 
         "Günther Lütjens": {
             "correct": false,
-            "feedback": "Günther Lütjens is a German Admiral who served in the First and Second World Wars, he was never a pirate."
+            "feedback": "<Strong><em>Günther Lütjens</em></strong> is a German Admiral who served in the First and Second World Wars, <Strong><em>he was never a pirate.</em></strong>"
 
         },
 
         "Zheng Yi Sao": {
             "correct": true,
-            "feedback": "Zheng Yi Sao was a pirate leader who operated in the South China Sea, Canton or today known as Guangzhou, and the Carribean. Zheng Yi Sao's successful career as a pirate leader resulted her in overwhelming anti-piracy oppositions, and eventually having a peaceful life after leaving piracy. She becamed married, had one child, and died in 1844."
+            "feedback": "<Strong><em>Zheng Yi Sao</em></strong> was a <Strong><em>pirate leader</em></strong> who operated in the South China Sea, Canton or today known as Guangzhou, and the Carribean."
+
+        },
+
+        "Napoleon Bonaparte": {
+            "correct": false,
+            "feedback": "<Strong><em>Napoleon Bonaparte</em></strong> was an Emperor of the French Republic. <Strong><em>He was never a pirate.</em></strong>"
+
+        },
+
+        "Sun Yat-sen": {
+            "correct": false,
+            "feedback": "<Strong><em>Sun Yat-sen</em></strong> was the first provisional president of the Republic of China(Taiwan) and 'Foreunner of the Revolution' in the People's Republic of China. <Strong><em>He was never a pirate.</em></strong>"
+
+        },
+
+        "Michiel de Ruyter": {
+            "correct": false,
+            "feedback": "<Strong><em>Michiel de Ruyter</em></strong> was an admiral for the Dutch Navy during the Anglo-Dutch Wars. <Strong><em>He was never a pirate.</em></strong>"
 
         }
 
