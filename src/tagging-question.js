@@ -13,12 +13,14 @@ export class TaggingQuestion extends DDD {
         
         this.answers = "defualt";
         this.image = "https://cdn.freebiesupply.com/logos/large/2x/penn-state-lions-logo-png-transparent.png";
-        this.message = "This is a defualt message: Feedback will be displayed here once the your answer(s) are checked.";
+        this.message = "This is a defualt message: Feedback will be displayed here once your answer(s) are checked.";
         this.question = "The question will appear here.";
         this.currentTag;
         this.checked = false;
         this.dataSheet = new URL('../src/tagdata.json', import.meta.url).href;
         this.zoomToggle = true;
+        this.helpToggle = true;
+        this.altText = "The best PSU Logo.";
 
         
         const statusDetails = localStorage.getItem('zoomStatus');
@@ -27,6 +29,12 @@ export class TaggingQuestion extends DDD {
             
         }
         
+
+        const help = localStorage.getItem('helpStatus');
+        if (help === 'i') {
+            this.style.setProperty('--help-vision','0');
+
+        }
 
     }
   
@@ -49,7 +57,6 @@ export class TaggingQuestion extends DDD {
                 border: 3px solid black;
                 margin: var(--ddd-spacing-1);
                 padding: var(--ddd-spacing-1);
-                overflow-y: scroll;
 
             }
 
@@ -127,6 +134,24 @@ export class TaggingQuestion extends DDD {
                 
             }
 
+            .zoomedImgContainer {
+                display: flex;
+                justify-content: center;
+                position: absolute;
+                top: 8%;
+                left: 8%;
+                background-color: black;
+                min-width: 85%;
+                height: 85%;
+                padding: var(--ddd-spacing-0);
+                margin: var(--ddd-spacing-0);
+                opacity: var(--details-vision, 0);
+                pointer-events: none;
+                transition: 0.3s ease-in-out;
+                border: 3px solid white;
+                
+            }
+
             
             .questionText {
                 font-family: georgia;
@@ -161,6 +186,17 @@ export class TaggingQuestion extends DDD {
                 top: 3%;
                 left: 75%;
                 border: 2px dashed white;
+            }
+
+            .zoomedImg {
+                opacity: var(--details-vision, 0);
+                max-height: 90%;
+                max-width: 70%;
+                padding: var(--ddd-spacing-4);
+                margin: var(--ddd-spacing-4);
+                pointer-events: none;
+                transition: 0.3s ease-in-out;
+
             }
 
             #feedback {
@@ -244,6 +280,24 @@ export class TaggingQuestion extends DDD {
 
             }
 
+            #helpButton {
+                height: 50px;
+                width: 50px;
+                border-color: var(--ddd-theme-default-nittanyNavy);
+                background-color: var(--ddd-theme-default-pughBlue);
+                font-family: georgia;
+                position: absolute;
+                top: 89%;
+                left: 95%;
+                margin: var(--ddd-spacing-0);
+                padding: var(--ddd-spacing-0);
+                align-content: center;
+                border: transparent;
+                font-size: 25px;
+
+            }
+
+
             #panel #resetChips:focus,
             #panel #resetChips:hover {
                 background-color: red;
@@ -275,6 +329,15 @@ export class TaggingQuestion extends DDD {
                 
             }
 
+            #helpButton:focus,
+            #helpButton:hover {
+                background-color: var(--ddd-theme-default-nittanyNavy);
+                color: var(--ddd-theme-default-roarMaxlight);
+                transform: scale(1.1);
+                transition: 0.3s ease-in-out;
+                
+            }
+
             .correct {
                 border: solid 3px black;
                 color: black;
@@ -299,34 +362,187 @@ export class TaggingQuestion extends DDD {
                 user-select: none;
             }
 
-
-            .zoomedImgContainer {
+            .helpBox {
                 display: flex;
-                justify-content: center;
                 position: absolute;
                 top: 8%;
                 left: 8%;
-                background-color: black;
+                background-color: var(--ddd-theme-default-potentialMidnight);
                 min-width: 85%;
                 height: 85%;
                 padding: var(--ddd-spacing-0);
                 margin: var(--ddd-spacing-0);
-                opacity: var(--details-vision, 0);
+                opacity: var(--help-vision, 0);
                 pointer-events: none;
                 transition: 0.3s ease-in-out;
                 border: 3px solid white;
                 
             }
 
-            .zoomedImg {
-                opacity: var(--details-vision, 0);
-                max-height: 90%;
-                max-width: 70%;
-                padding: var(--ddd-spacing-4);
-                margin: var(--ddd-spacing-4);
-                pointer-events: none;
-                transition: 0.3s ease-in-out;
+            .infoTitle {
+                color: white;
+                position: absolute;
+                top: 2%;
+                left: 2%;
+                font-size: 32px;
+                font-family: georgia;
+                padding: var(--ddd-spacing-0);
+                margin: var(--ddd-spacing-0);
+                font-weight: bold;
+            }
 
+            .questionInfo {
+                position: absolute;
+                top: 11%;
+                left: 3%;
+                background-color: var(--ddd-theme-default-nittanyNavy);
+                width: 63%;
+                height: 100px;
+                border: 3px solid black;
+                margin: var(--ddd-spacing-0);
+                padding: var(--ddd-spacing-0);
+                overflow-y: auto;
+            }
+
+            .tagInfo {
+                position: absolute;
+                top: 45%;
+                left: 1.5%;
+                background-color: var(--ddd-theme-default-nittanyNavy);
+                width: 66.3%;
+                height: 150px;
+                border: 3px solid black;
+                margin: var(--ddd-spacing-0);
+                padding: var(--ddd-spacing-0);
+                overflow-y: auto;
+            }
+
+            .promptInfo {
+                position: absolute;
+                top: 7%;
+                left: 1%;
+                background-color: var(--ddd-theme-default-beaverBlue);
+                width: 65%;
+                height: 200px;
+                border: 3px solid black;
+                margin: var(--ddd-spacing-2);
+                padding: var(--ddd-spacing-2);
+            }
+
+            .feedbackInfo {
+                position: absolute;
+                top: 71%;
+                left: 1%;
+                background-color: white;
+                width: 65%;
+                height: 100px;
+                border: 3px solid black;
+                margin: var(--ddd-spacing-2);
+                padding: var(--ddd-spacing-2);
+                overflow-y: scroll;
+                resize: vertical;
+            }
+
+            .imageInfo {
+                background-color: gray;
+                width: 200px;
+                height: 200px;
+                position: absolute;
+                top: 9%;
+                left: 76%;
+                border: 2px dashed white;
+            }
+
+            .solutionInfo {
+                position: absolute;
+                top: 28%;
+                left: 2.5%;
+                background-color: var(--ddd-theme-default-skyMaxLight);
+                width: 62%;
+                height: 50px;
+                margin: var(--ddd-spacing-2);
+                padding: var(--ddd-spacing-2);
+                border: 3px dashed var(--ddd-theme-default-potentialMidnight);
+                overflow-y: scroll;
+                z-index: 2;
+            }
+
+            .infoText {
+                text-align: center;
+                font-size: 15px;
+                font-family: georgia;
+                padding: var(--ddd-spacing-1);
+                margin: var(--ddd-spacing-1);
+                color: black;
+            }
+
+            .resetInfo {
+                font-family: georgia;
+                font-size: 12px;
+                color: black;
+                width: 75px;
+                height: 45px;
+                margin: var(--ddd-spacing-1);
+                padding: var(--ddd-spacing-1);
+                border: var(--ddd-border-sm);
+                border-color: var(--ddd-theme-default-nittanyNavy);
+                background-color: var(--ddd-theme-default-keystoneYellow);
+                font-weight: bold;
+                position: absolute;
+                top: 45%;
+                left: 68.5%;
+
+            }
+
+            .checkAnswerInfo {
+                font-family: georgia;
+                font-size: 12px;
+                color: black;
+                width: 75px;
+                height: 45px;
+                margin: var(--ddd-spacing-1);
+                padding: var(--ddd-spacing-1);
+                border: var(--ddd-border-sm);
+                border-color: var(--ddd-theme-default-nittanyNavy);
+                background-color: var(--ddd-theme-default-futureLime);
+                font-weight: bold;
+                position: absolute;
+                top: 53%;
+                left: 68.5%;
+                
+            }
+
+            .zoomInfo {
+                height: 30px;
+                width: 30px;
+                background-color: var(--ddd-theme-default-navy60);
+                font-family: georgia;
+                position: absolute;
+                top: 10%;
+                left: 88%;
+                margin: var(--ddd-spacing-0);
+                padding: var(--ddd-spacing-0);
+                align-content: center;
+                border: transparent;
+                
+            }
+
+            .panelInfo {
+                font-family: georgia;
+                font-size: 12px;
+                color: black;
+                width: 200px;
+                height: 35px;
+                margin: var(--ddd-spacing-1);
+                padding: var(--ddd-spacing-1);
+                border: var(--ddd-border-sm);
+                border-color: var(--ddd-theme-default-nittanyNavy);
+                background-color: white;
+                font-weight: bold;
+                position: absolute;
+                top: 44.9%;
+                left: 75%;
+                
             }
 
 
@@ -567,6 +783,7 @@ export class TaggingQuestion extends DDD {
 
             if (allSolutionsCorrect && allTagsCorrect) {
                 this.makeItRain();
+                alert("All answers are correct!");
 
                 this.shadowRoot.querySelector('#feedback').innerHTML = ``;
                 const tags = this.shadowRoot.querySelectorAll('#solutionArea .chip');
@@ -575,6 +792,7 @@ export class TaggingQuestion extends DDD {
                     tag.title = tag.dataset.feedback;
 
                     this.shadowRoot.querySelector('#feedback').innerHTML += `<li style="color: green;">${tag.dataset.feedback}</li>`;
+                    
                 }
             }
         }
@@ -615,12 +833,26 @@ export class TaggingQuestion extends DDD {
         }
     }
 
+    toggleHelp() {
+        this.helpToggle = !this.helpToggle;
+
+        if(!this.helpToggle) {
+            
+            this.style.setProperty('--help-vision','1');
+            
+        } else {
+            this.style.removeProperty('--help-vision');
+            localStorage.removeItem('helpStatus');
+            
+        }
+    }
+
     render() {
         return html`
             <confetti-container id="confetti">
                 <div class="questionContainer">
                     <div class="solutionContainer">
-                            <img class="image" src="${this.image}" alt=""></img>
+                            <img class="image" src="${this.image}" alt="${this.altText}"></img>
                             
                             <button id="zoomButton" @click="${this.toggleZoom}">
                                 ${this.zoomToggle ? '+' : '-'}
@@ -652,7 +884,7 @@ export class TaggingQuestion extends DDD {
                             return html`
                             <li>
                                 <span class="chip ${isCorrect ? 'correct' : 'incorrect'}">${tag.textContent}</span>
-                                ${isCorrect ? html`<span class="chip" style="color: green;">CORRECT: ${tag.dataset.feedback}</span>` : html`<span class="chip" style="color: red;">INCORRECT: ${tag.dataset.feedback}</span>`}
+                                ${isCorrect ? html`<span class="chip" style="color: green;">${tag.dataset.feedback}</span>` : html`<span class="chip" style="color: red;">${tag.dataset.feedback}</span>`}
                             </li>
                             `;
                         })}
@@ -662,6 +894,44 @@ export class TaggingQuestion extends DDD {
                         <img class="zoomedImg" src="${this.image}" alt=""></img>
 
                     </div>
+
+                    <div class="helpBox">
+                        <p class="infoTitle">Getting Started: Tagging Question</p>
+                        
+                        <div class="solutionInfo">
+                            <p class="infoText">Answers to be checked go here. A <strong style="color: red;">red tag</strong> indicates a wrong answer. A <strong style="color: green;">green tag</strong> indicates a correct answer. Click a tag again to place it back into the answer bank. Click the reset button after checking answers to try the question again.</p>
+                        </div>                        
+
+                        <div class="promptInfo">
+                        </div>
+
+                        <div class="questionInfo">
+                            <p class="infoText" style="color: white;">Question prompts will appear here.</p>
+                        </div>
+
+                        <div class="tagInfo">
+                            <p class="infoText" style="color: white;" >Answer Bank: Select answers to be checked here.</p>
+                        </div>
+
+                        <div class="feedbackInfo">
+                            <p class="infoText" >Feedback for checked answer(s) will appear here. <strong style="color: red;">Red text</strong> indicates wrong answers. <strong style="color: green;">Green text</strong> indicates correct answers. To pass, all correct answers must be selected in the solution. area.</p>
+                        </div>
+
+                        <div class="imageInfo">
+                            <p class="infoText">Questions with an accompanied image will appear here.</p>
+                        </div>
+
+                        <button class="resetInfo">Reset</button>
+                        <button class="checkAnswerInfo">Check Answers</button>
+                        <button class="zoomInfo">+</button>
+                        <div class="panelInfo"><p class="infoText" style="font-size: 12px;">Reset and place all tags back into the answer bank.</p></div>
+                        <div class="panelInfo" style="top: 52.6%;"><p class="infoText" style="font-size: 12px;">Check your answers and recieve feedback.</p></div>
+                        <div class="panelInfo" style="top: 9%; left: 91%; height: 100px; width: 70px;"><p class="infoText" style="font-size: 12px;">Zoom button to inspect images closer.</p></div>
+
+                        <rpg-character walking seed="evp5350" style="position absolute; top: 75%; left: 90%;"></rpg-character>
+                    </div>
+
+                    <button id="helpButton" @click=${this.toggleHelp}>i</button>
 
                 </div>
             </confetti-container>
